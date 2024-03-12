@@ -1,10 +1,11 @@
 class CabechesController < ApplicationController
+  before_action :cabeche_find, only: [:show, :create, :edit, :update, :destroy]
+
   def index
     @cabeches = Cabeche.all
   end
 
   def show
-    @cabeche = Cabeche.find(params[:id])
   end
 
   def new
@@ -13,6 +14,7 @@ class CabechesController < ApplicationController
 
   def create
     @cabeche = Cabeche.new(cabeche_params)
+    @cabeche.user = current_user
     if @cabeche.save!
       redirect_to cabeche_path(@cabeche)
     else
@@ -21,11 +23,10 @@ class CabechesController < ApplicationController
   end
 
   def edit
-    @cabeche = Cabeche.find(params[:id])
   end
 
   def update
-    @cabeche = Cabeche.find(params[:id])
+    @cabeche.user = current_user
     if @cabeche.update!(cabeche_params)
       redirect_to cabeche_path(@cabeche)
     else
@@ -34,12 +35,15 @@ class CabechesController < ApplicationController
   end
 
   def destroy
-    @cabeche = Cabeche.find(params[:id])
     @cabeche.destroy
     redirect_to cabeche_path, status: :see_other
   end
 
   private
+
+  def cabeche_find
+    @cabeche = Cabeche.find(params[:id])
+  end
 
   def cabeche_params
     params.require(:cabeche).permit(:adress, :name, :description, :price_per_minute)
