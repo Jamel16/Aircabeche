@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# u1 = User.new(email: , password:, first_name:, last_name:, phone_number: )
+# u1.save!
+
+#
+
+# user = [u1, u2,  u3, u4]
+
+# Cabeche.create!(user_id: user.id)

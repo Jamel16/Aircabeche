@@ -1,8 +1,10 @@
-<% @cabeches.each do |cabeche| %>
+<h1>index de cabeche</h1>
 <ul>
+<% @cabeches.each do |cabeche| %>
   <li><%= @cabeche.name %>
   <%= @cabeche.description %>
   <%= @cabeche.adress %>
-  <%= @cabeche.price_per_minute %></li>
+  <%= @cabeche.price_per_minute %>
+  <%= @cabeche.user.name %></li>
   <% end %>
 </ul>

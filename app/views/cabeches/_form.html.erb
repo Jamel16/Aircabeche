@@ -1,0 +1,7 @@
+<%= simple_form_for(cabeche) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :price_per_minute, as: :integer, min: 0 %>
+  <%= f.submit %>
+<% end %>
